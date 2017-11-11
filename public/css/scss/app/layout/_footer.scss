@@ -1,0 +1,87 @@
+// ==============================================
+// FOOTER
+// ==============================================
+
+.footer {
+
+	position: relative;
+	top: 10px;
+
+	.dislike, .like, .home {
+		text-decoration: none;
+		color: $black;
+	}
+
+	// DISLIKE
+	.dislike {
+		float: left;
+	}
+
+	// LIKE
+	.like {
+		float: right;
+		margin-right: -10px;
+	}
+
+	.home {
+		position: absolute;
+		left: 50%;
+		@include X-50();
+	}
+
+	// ICONS
+	.icon {
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 18px;
+		border-radius: 50%;
+		width: 32px;
+		height: 32px;
+		display: inline-block;
+	}
+
+	// DISLIKE ICON
+	.dislike .icon {
+		background-image: url(../img/trash_white.png);
+		background-color: $mediumDarkGrey;
+	}
+
+	// HOME ICON
+	.home .icon {
+		background-image: url(../img/home_white.png);
+		background-color: $mediumDarkGrey;
+	}
+
+	// LIKE ICON
+	.like .icon {
+		background-image: url(../img/heart_white.png);
+		background-color: $red;
+	}
+
+	// NUM
+	.num {
+		background: $auxiliarColor;
+		border-radius: 50%;
+		font-size: 12px;
+		width: 18px;
+		height: 18px;
+		position: relative;
+		top: -25px;
+		right: 12px;
+		display: inline-block;
+		text-align: center;
+		font-style: normal;
+		font-weight: bold;
+		line-height: 1.4;
+	}
+
+	// ANIMATIONS
+	.dislike, .like {
+		&.animate {
+			.num {
+				@include animation(0, 1s, bounce);
+			}
+		}
+	}
+
+}

@@ -1,0 +1,280 @@
+// ==============================================
+// CARDS
+// ==============================================
+
+// VIEWPORT
+#viewport {
+	width: 400px;
+	max-width: 85%;
+	margin: 90px auto 0;
+	height: 410px;
+	position: relative;
+
+	// Arrow
+	&:after {
+		top: 97%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-top-color: $auxiliarColor;
+		border-width: 14px;
+		margin-left: -14px;
+	}
+
+	// The arrow will be placed depending on the viewport class
+	&.home:after { left: 50%; }
+	&.like:after { left: 92.5%; }
+	&.dislike:after { left: 5%; }
+}
+
+// Loading
+.loading {
+	display: none;
+	@extend .special;
+	background: url(../img/ajax-loader.gif) no-repeat center center $auxiliarColor;
+	color: $black;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	@include X-Y-50();
+	width: 100%;
+	text-align: center;
+	height: 390px;
+	padding: 145px 20px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	z-index: 0;
+}
+
+// No more content
+.no-cards {
+	@extend .special;
+	background: $auxiliarColor;
+	color: $black;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	@include X-Y-50();
+	z-index: 0;
+	width: 100%;
+	text-align: center;
+	height: 390px;
+	padding: 145px 20px;
+	box-sizing: border-box;
+	border-radius: 5px;
+
+	.title {
+		text-transform: uppercase;
+		font-size: 36px;
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	.message {
+		font-size: 22px;
+	}
+
+	.icon-settings {
+		display: block;
+		background: url(../img/settings.png) no-repeat 0 0;
+		background-size: cover;
+		width: 30px;
+		height: 30px;
+		margin: 10px auto;
+	}
+}
+
+// CARDS
+// Cards container
+.cards li {
+	opacity: 0;
+	width: 400px;
+	max-width: 100%;
+	height: 400px;
+	list-style: none;
+	background: #fff;
+	border-radius: 5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	border: 3px solid $auxiliarColor;
+	box-sizing: border-box;
+	cursor: default;
+	padding: 0 10px;
+	@include effect(opacity, 0.3s, linear);
+	z-index: 1;
+	touch-action: none !important;
+	overflow: hidden;
+
+	&.in-deck {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	// Change slightly position to background cards
+	&.in-deck:nth-child(3) { top: 2px; transform: translate(2px, 2px) rotate(0.4deg); }
+	&.in-deck:nth-child(2) { top: 4px; transform: translate(-4px, -2px) rotate(-1deg); }
+
+	// Title
+	.title {
+		@extend .bold;
+		font-size: 24px;
+		width: 100%;
+		padding: 0 15px;
+		text-align: center;
+		display: block;
+		margin: 20px 0 15px;
+
+		&.little {
+			font-size: 18px;
+		}
+	}
+
+	.image {
+		width: 125px;
+		height: 125px;
+		border-radius: 50%;
+		margin: 10px auto;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.date {
+
+		.day, .hour {
+			@extend .bold;
+			display: block;
+			font-size: 20px;
+			text-align: center;
+
+			&.little {
+				font-size: 16px;
+			}
+		}
+
+	}
+
+	.price {
+		margin: 10px 0;
+	}
+
+	.likes {
+		position: absolute;
+		left: 10px;
+		bottom: 10px;
+		font-size: 12px;
+
+		&:before {
+			content: ' ';
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			background: url(../img/heart_red.png) no-repeat 0 0;
+			background-size: cover;
+			position: relative;
+			top: 4px;
+			margin-right: 5px;
+		}
+	}
+
+	.categories {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+
+		.category {
+			width: 25px;
+			height: 25px;
+			background-position: center center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			display: inline-block;
+
+		}
+	}
+
+	.to-see-more {
+		margin: 10px 0;
+		text-align: center;
+		a {
+			color: $fontColor;
+			text-decoration: underline;
+		}
+	}
+
+	// Animation when no popup and click
+	&.no-popup {
+		&.clicked {
+			@include animation (0, 0.5s, 'wiggle', 1);
+		}
+	}
+}
+
+// Cards single event
+.popup .popup-container {
+	height: 83%;
+	overflow-y: scroll;
+}
+
+.popup .single-event {
+
+	max-width: 700px;
+	margin: 0 auto;
+
+	.image {
+		width: 100%;
+		height: 200px;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		margin-bottom: 15px;
+	}
+
+	.title {
+		font-size: 30px;
+		font-weight: bold;
+		padding: 0 20px;
+	}
+
+	.description {
+		margin: 15px 0;
+		font-style: italic;
+		padding: 0 20px;
+		font-size: 14px;
+	}
+
+	// Update styles from info text
+	.info {
+		padding: 0 20px;
+
+		// Pararagrahps
+		p {
+			font-size: 12px;
+			margin: 10px 0;
+		}
+
+		// Iframes
+		iframe {
+			max-width: 100%;
+			max-height: 230px;
+		}
+
+		// Lists
+		ul { padding-left: 15px; }
+		li { font-size: 12px; }
+
+		// Links
+		a {
+			text-decoration: none;
+			font-weight: bold;
+			color: $blueBg;
+		}
+	}
+
+}

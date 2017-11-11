@@ -1,0 +1,49 @@
+// ==============================================
+// BUTTONS
+// ==============================================
+
+// Vars
+$btnMainTextColor: $white;
+$btnMainBg: $black;
+$btnMainBorder: $white;
+$btnMainHoverBg: $black;
+$btnMainHoverBorder: $black;
+
+// GENERAL BUTTON
+.btn {
+  @extend .bold;
+  @include effect(all, 0.5s, ease);
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 10px 25px 10px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  // MAIN BUTTON
+  &.btn-main {
+    color: $btnMainTextColor;
+    border: 3px solid $btnMainBorder;
+
+    &:hover, &:focus {
+      border-color: $btnMainHoverBorder;
+
+      &:after {
+        left: 12px;
+      }
+    }
+  }
+
+  &.btn-twitter {
+    background: $twitter;
+    color: $white;
+
+  }
+
+  // ALTERNATE BUTTON
+  &.btn-alternate {
+    // Use if alternate button
+  }
+
+}

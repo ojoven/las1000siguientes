@@ -1,0 +1,36 @@
+// ==============================================
+// COLORS
+// ==============================================
+
+// FIRST WE DEFINE DESCRIPTIVE COLORS
+// Color names provided by http://chir.ag/projects/name-that-color/
+// The method to create the name is: "Closest standard color" name + "Name that color" name (brown + dark ebony)
+$white: #ffffff;
+$lightGrey: #f6f6f6;
+$mediumGrey: #e6e6e6;
+$mediumDarkGrey: #999;
+$darkGrey: #666;
+$black: #212021;
+$blueBg: #0e7d8e;
+$red: #BE2625;
+$yellow: #fac831;
+$lightBlue: #B4CDCD;
+$twitter: #1da1f2;
+
+$auxiliarColor: $lightBlue;
+
+// Color functions
+$lineColor: $mediumGrey;
+$fontColor: $black;
+
+%exampleGradient {
+  @include bbg(top, bottom, $white, $black);
+}
+
+
+// NOW WE DEFINE FUNCTIONS
+
+// General functions
+$bodyBg: $white;
+$textColor: $black;
+$linkColor: $black;
