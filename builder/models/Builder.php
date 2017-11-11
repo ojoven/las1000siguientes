@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__. '/../config.php';
+
 /** BUILDER **/
 class Builder {
 
@@ -7,11 +9,20 @@ class Builder {
 
 		$wordModel = new Word();
 		$words = $wordModel->getListWords();
+
+		$db = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
 		foreach ($words as $word) {
-
-
+			$wordDb = $this->parseWordForDatabase($word);
+			Functions::insertDB($db, 'words', $wordDb);
 		}
 
+	}
+
+	public function parseWordForDatabase($word) {
+
+		$wordDb['word'] = $word;
+		return $wordDb;
 	}
 
 	/** HTMLS **/

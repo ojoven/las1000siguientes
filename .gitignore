@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 /.idea
+/builder/config.php
 Homestead.json
 Homestead.yaml
 .env

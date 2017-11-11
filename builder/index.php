@@ -11,6 +11,7 @@ define('ROOT', realpath(dirname(__FILE__)));
 // LIBRARIES
 require_once 'lib/simple_html_dom.php'; // Simple HTML Dom: Scraping functionalities
 require_once 'lib/Functions.php';
+require_once 'lib/database.php';
 
 // MODELS
 require_once 'models/Builder.php';
@@ -19,5 +20,5 @@ require_once 'models/Word.php';
 
 // Build the database
 $builderModel = new Builder();
-$builderModel->saveHtmlWords();
+//$builderModel->saveHtmlWords();
 $builderModel->saveWordsToDatabase();

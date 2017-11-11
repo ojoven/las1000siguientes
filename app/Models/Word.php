@@ -21,8 +21,8 @@ class Word extends Model {
 	public function getWords() {
 
 		$allWords = $this->getAllWords();
-		//$words = $allWords[array_rand($allWords, $this->numWordsPage)]
-		$words = $allWords;
+		shuffle($allWords);
+		$words = array_slice($allWords, 0, $this->numWordsPage);
 
 		return $words;
 	}

@@ -5,7 +5,7 @@
 ?>
 
 <li class="card word-card show-popup" data-word="<?php echo $word['id']; ?>">
-    <div class="word">
+    <div class="title">
         <?php echo $word['word']; ?>
     </div>
 </li>
