@@ -4,8 +4,8 @@ function capitalizeFirstLetter(string) {
 }
 
 function appendStylesToIframe($selector) {
-	var $head = $selector.contents().find("head");
-	console.log('works?');
+	var $head = $selector.find("head");
+	console.log($head);
 	$head.append($("<link/>",
-		{ rel: "stylesheet", href: "/iframe.css", type: "text/css" }));
+		{ rel: "stylesheet", href: "/css/iframe.css", type: "text/css" }));
 }
