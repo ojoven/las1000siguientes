@@ -55,6 +55,8 @@ function activateCards() {
 		var card = stack.createCard($(this).get(0));
 		cards.push(card);
 
+		appendStylesToIframe($(this).find('iframe'));
+
 		// Bind word card
 		$(".card.show-popup").off('click').on('click', function() {
 

@@ -10,7 +10,7 @@ h2, h3, h4 { font-weight: normal; }
 
 .regular, body, h4, p { font-family: 'Raleway', sans-serif; font-weight: 400; }
 
-.bold, h1, h2, h3, .btn, .cards li .title, .cards li .date .day, .cards li .date .hour, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, .settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
+.bold, h1, h2, h3, .btn, .cards li .title, .settings .title, .settings .section > .section-title, .settings .select-all, .settings .deselect-all, .settings-popup .save-settings { font-family: 'Raleway', sans-serif; font-weight: bold; }
 
 .special, #logo-text, #subheader h2, .loading, .no-cards, .resume-resume .dates > li > .title { font-family: 'Amatic SC', cursive; font-weight: normal; }
 
@@ -183,22 +183,15 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .cards li.in-deck:nth-child(2) { top: 4px; transform: translate(-4px, -2px) rotate(-1deg); }
 .cards li .title { font-size: 24px; width: 100%; padding: 0 15px; text-align: center; display: block; margin: 20px 0 15px; }
 .cards li .title.little { font-size: 18px; }
-.cards li .image { width: 125px; height: 125px; border-radius: 50%; margin: 10px auto; background-position: center center; background-repeat: no-repeat; background-size: cover; }
-.cards li .date .day, .cards li .date .hour { display: block; font-size: 20px; text-align: center; }
-.cards li .date .day.little, .cards li .date .hour.little { font-size: 16px; }
-.cards li .price { margin: 10px 0; }
+.cards li iframe { height: 280px; }
+.cards li iframe mark { background: none; }
 .cards li .likes { position: absolute; left: 10px; bottom: 10px; font-size: 12px; }
 .cards li .likes:before { content: ' '; display: inline-block; width: 14px; height: 14px; background: url(../img/heart_red.png) no-repeat 0 0; background-size: cover; position: relative; top: 4px; margin-right: 5px; }
-.cards li .categories { position: absolute; right: 10px; bottom: 10px; }
-.cards li .categories .category { width: 25px; height: 25px; background-position: center center; background-size: contain; background-repeat: no-repeat; display: inline-block; }
-.cards li .to-see-more { margin: 10px 0; text-align: center; }
-.cards li .to-see-more a { color: #212021; text-decoration: underline; }
 .cards li.no-popup.clicked { -webkit-animation-delay: 0; -webkit-animation-duration: 0.5s; -webkit-animation-name: "wiggle"; -webkit-animation-fill-mode: forwards; -webkit-animation-iteration-count: 1; -moz-animation-delay: 0; -moz-animation-duration: 0.5s; -moz-animation-name: "wiggle"; -moz-animation-fill-mode: forwards; -moz-animation-iteration-count: 1; -o-animation-delay: 0; -o-animation-duration: 0.5s; -o-animation-name: "wiggle"; -o-animation-fill-mode: forwards; -o-animation-iteration-count: 1; animation-delay: 0; animation-duration: 0.5s; animation-name: "wiggle"; animation-fill-mode: forwards; animation-iteration-count: 1; }
 
 .popup .popup-container { height: 83%; overflow-y: scroll; }
 
 .popup .single-event { max-width: 700px; margin: 0 auto; }
-.popup .single-event .image { width: 100%; height: 200px; background-repeat: no-repeat; background-position: center center; background-size: cover; margin-bottom: 15px; }
 .popup .single-event .title { font-size: 30px; font-weight: bold; padding: 0 20px; }
 .popup .single-event .description { margin: 15px 0; font-style: italic; padding: 0 20px; font-size: 14px; }
 .popup .single-event .info { padding: 0 20px; }
@@ -270,17 +263,6 @@ input[type="checkbox"] { -webkit-appearance: checkbox; }
 .welcome .swipe.swipe-center .icon-swipe { background-image: url(../img/flick_center.png); }
 .welcome .swipe.swipe-left.swipe-desktop .icon-swipe { background-image: url(../img/flick_left_desktop.png); }
 .welcome .warning-tmp { font-size: 12px; color: #666; }
-
-/** CUSTOM CARDS **/
-.cards li.ego-card .image { width: 100%; height: 125px; border-radius: 0; }
-.cards li.ego-card .description { padding: 0 20px; }
-.cards li.ego-card .description .highlight { font-weight: bold; display: block; margin: 15px 0; }
-.cards li.ego-card .description p { display: block; font-size: 14px; margin-bottom: 15px; }
-
-.cards li.friend-card .image { width: 100%; border-radius: 0; }
-.cards li.friend-card .description { font-size: 14px; padding: 0 20px; margin: 20px 0; }
-.cards li.friend-card a.link { font-size: 20px; font-weight: bold; color: #212021; }
-.cards li.friend-card .friends-hashtag { position: absolute; bottom: 15px; right: 15px; color: #B4CDCD; font-size: 14px; font-weight: bold; }
 
 /** PRINT **/
 .just-print { display: none !important; }

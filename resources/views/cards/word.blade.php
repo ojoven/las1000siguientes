@@ -8,4 +8,5 @@
     <div class="title">
         <?php echo $word['word']; ?>
     </div>
+    <iframe src="/data/<?php echo $word['word']; ?>.html"></iframe>
 </li>
