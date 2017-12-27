@@ -60,5 +60,12 @@ class Functions {
 		return str_replace("'","\'",str_replace("\'","'",$string));
 	}
 
+	public static function strip_selected_tags_content($text, $tags = array()) {
+		echo $text . PHP_EOL;
+		$text = preg_replace('@<('. implode('|', $tags) .')b.*?>.*?</1>@si', '', $text);
+		echo $text . PHP_EOL;
+		return $text;
+	}
+
 
 }

@@ -20,5 +20,7 @@ require_once 'models/Word.php';
 
 // Build the database
 $builderModel = new Builder();
-$builderModel->saveHtmlWords();
-$builderModel->saveWordsToDatabase();
+//$builderModel->saveHtmlWords();
+//$builderModel->cleanHtmlFiles();
+//$builderModel->saveWordsToDatabase();
+$builderModel->saveDefinitions();
