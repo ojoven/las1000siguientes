@@ -9,7 +9,7 @@ page.open(url, function(status) {
 	setTimeout(function() {
 		console.log(page.content);
 		phantom.exit();
-	}, 500);
+	}, 1000);
 });
 
 page.onError = function(msg, trace) {

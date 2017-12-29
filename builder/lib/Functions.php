@@ -49,7 +49,7 @@ class Functions {
 			if (is_string($value)) {
 				$value = self::escapeSingleQuotes($value);
 			}
-			$values .= "'". iconv("UTF-8", "CP1252", $value) . "',";
+			$values .= "'". iconv("UTF-8", "CP1252//IGNORE", $value) . "',";
 		}
 		$dataParsed['indexes'] = rtrim($indexes, ',');
 		$dataParsed['values'] = rtrim($values, ',');

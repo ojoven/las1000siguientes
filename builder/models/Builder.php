@@ -64,13 +64,32 @@ class Builder {
 
 		$wordModel = new Word();
 		$words = $wordModel->getListWords();
+
+		$db = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
 		foreach ($words as $word) {
 			$definitions = $this->extractDefinitionsWord($word);
-			if (!$definitions) {
-				echo $word . PHP_EOL;
+			foreach ($definitions as $definition) {
+				echo $definition['definition'] . PHP_EOL;
+				$definitionDB = $this->parseDefinitionDB($definition, $word);
+				Functions::insertDB($db, 'definitions', $definitionDB);
 			}
 		}
 
+	}
+
+	public function parseDefinitionDB($definition, $word) {
+
+		$definitionDB['word'] = $word;
+		$definitionDB['definition'] = str_replace('‖ ', '', $definition['definition']);
+		$definitionDB['examples'] = implode('||', $definition['examples']);
+		$definitionDB['attributes'] = implode('||', $definition['attributes']);
+		$definitionDB['featured'] = $definition['featured'];
+		$definitionDB['position'] = $definition['position'];
+		$definitionDB['created_at'] = date('Y-m-d H:i:s');
+		$definitionDB['updated_at'] = date('Y-m-d H:i:s');
+
+		return $definitionDB;
 	}
 
 	public function extractDefinitionsWord($word) {
@@ -109,12 +128,53 @@ class Builder {
 				$completeDefinition['position'] = $position;
 				$completeDefinition['examples'] = $definitionExamples;
 				$completeDefinition['attributes'] = $definitionAttributes;
-				$completeDefinition['featured'] = ($index === 0) ? true : false; // At first, we feature only the first definition
+				$completeDefinition['featured'] = ($index <= 2) ? true : false; // At first, we feature only the first 3 definitions
 				$definitions[] = $completeDefinition;
 			}
 		}
 
 		return $definitions;
+	}
+
+	/** EXAMPLES **/
+	public function saveExampleHTMLs() {
+
+		$wordModel = new Word();
+		$words = $wordModel->getListWords();
+
+		// Now we check if the HTMLs from the different sources are already stored
+		foreach ($words as $word) {
+
+			$url = 'https://glosbe.com/gapi/translate?from=spa&dest=eng&phrase=' . urlencode($word) . '&format=json&tm=true';
+
+			try {
+				$examplesHtmlString = ExamplesHtml::exampleHTMLExists($word) ?
+					ExamplesHtml::getExampleHTML($word) : ExamplesHtml::saveExampleHTML($word, $url);
+			} catch (Exception $e) {
+				Functions::log($word . ': ' . $e->getMessage());
+			}
+		}
+
+	}
+
+	public function saveExamples() {
+
+		$wordModel = new Word();
+		$words = $wordModel->getListWords();
+
+		$db = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+		//$words = array('artificio');
+
+		foreach ($words as $word) {
+			$definitions = $this->extractExamplesWord($word);
+			foreach ($definitions as $definition) {
+				echo $definition['definition'] . PHP_EOL;
+				$definitionDB = $this->parseDefinitionDB($definition, $word);
+				Functions::insertDB($db, 'definitions', $definitionDB);
+			}
+		}
+
 	}
 
 	/** AUXILIAR **/

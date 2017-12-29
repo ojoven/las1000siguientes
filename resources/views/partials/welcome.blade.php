@@ -1,7 +1,6 @@
 <li class="card welcome welcome-card no-popup">
     <div class="title">{!! __('Bienvenido a<br>las 1000 siguientes') !!}</div>
-    <p>¿Quieres escribir mejor, comunicarte mejor, ser un poquito más sabio?</p>
-    <p>Aquí encontrarás las 1000 siguientes palabras del castellano que deberías conocer.</p>
+    <p>Mejora tu léxico con esta cuidada selección de palabras</p>
 
     <!-- INSTRUCTIONS MOBILE -->
     <div class="instructions-mobile">

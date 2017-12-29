@@ -3,15 +3,17 @@
 // ==============================================
 
 // VIEWPORT
+$cardHeight: 440px;
 #viewport {
 	width: 400px;
 	max-width: 85%;
 	margin: 90px auto 0;
-	height: 410px;
+	height: $cardHeight + 10px;
 	position: relative;
 
 	// Arrow
 	&:after {
+		display: none;
 		top: 97%;
 		left: 50%;
 		border: solid transparent;
@@ -62,7 +64,7 @@
 	z-index: 0;
 	width: 100%;
 	text-align: center;
-	height: 390px;
+	height: $cardHeight - 10px;
 	padding: 145px 20px;
 	box-sizing: border-box;
 	border-radius: 5px;
@@ -90,14 +92,13 @@
 
 // CARDS
 // Cards container
-.cards li {
+.cards > li {
 	opacity: 0;
 	width: 400px;
 	max-width: 100%;
-	height: 400px;
+	height: $cardHeight;
 	list-style: none;
 	background: #fff;
-	border-radius: 5px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -123,16 +124,37 @@
 	// Title
 	.title {
 		@extend .bold;
-		font-size: 24px;
+		font-size: 40px;
 		width: 100%;
 		padding: 0 15px;
 		text-align: center;
 		display: block;
-		margin: 20px 0 15px;
+		margin: 25px 0 15px;
 
 		&.little {
 			font-size: 18px;
 		}
+	}
+
+	// Definitions
+	.definitions {
+
+		li {
+			list-style-type: none;
+			font-size: 16px;
+			margin: 10px 0;
+			text-align: center;
+			display: block;
+			font-weight: bold;
+			padding: 5px;
+
+			span {
+				display: inline;
+				border-bottom: 4px solid yellow;
+				line-height: 1.5;
+			}
+		}
+
 	}
 
 	iframe {

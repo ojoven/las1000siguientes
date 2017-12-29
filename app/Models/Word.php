@@ -3,7 +3,6 @@
 namespace App\Models;
 use App\Lib\Functions;
 use App\Lib\CacheFunctions;
-use App\Lib\RenderFunctions;
 use Illuminate\Database\Eloquent\Model;
 
 class Word extends Model {
@@ -23,6 +22,7 @@ class Word extends Model {
 		$allWords = $this->getAllWords();
 		shuffle($allWords);
 		$words = array_slice($allWords, 0, $this->numWordsPage);
+		$words = $this->completeWords($words);
 
 		return $words;
 	}
@@ -30,8 +30,9 @@ class Word extends Model {
 	// Complete Words
 	public function completeWords($words) {
 
+		$definitionModel = new Definition();
 		foreach ($words as &$word) {
-
+			$word['definitions'] = $definitionModel->getDefinitionsWord($word);
 		}
 
 		return $words;

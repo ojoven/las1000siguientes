@@ -76,7 +76,7 @@ h2, h3, h4 { font-weight: normal; }
 /* BASE STYLES */
 html, body { height: 100%; overflow: hidden; }
 
-body { background: #f6f6f6; color: #212021; }
+body { background: #f6f6f6; color: #212021; border: 4px solid #212021; }
 
 h1, h2, h3 { font-size: 38px; line-height: 1.2; }
 

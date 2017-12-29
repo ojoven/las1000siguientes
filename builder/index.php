@@ -16,6 +16,7 @@ require_once 'lib/database.php';
 // MODELS
 require_once 'models/Builder.php';
 require_once 'models/WordHtml.php';
+require_once 'models/ExamplesHtml.php';
 require_once 'models/Word.php';
 
 // Build the database
@@ -23,4 +24,5 @@ $builderModel = new Builder();
 //$builderModel->saveHtmlWords();
 //$builderModel->cleanHtmlFiles();
 //$builderModel->saveWordsToDatabase();
-$builderModel->saveDefinitions();
+//$builderModel->saveDefinitions();
+//$builderModel->saveExampleHTMLs();

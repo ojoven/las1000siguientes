@@ -8,5 +8,13 @@
     <div class="title">
         <?php echo $word['word']; ?>
     </div>
-    <iframe src="/data/<?php echo $word['word']; ?>.html"></iframe>
+    <div class="definitions">
+        <ul>
+            <?php foreach($word['definitions'] as $definition) {
+                if ($definition['featured']) { ?>
+                <li><span><?php echo $definition['definition']; ?></span></li>
+                <?php } ?>
+            <?php } ?>
+        </ul>
+    </div>
 </li>
