@@ -164,17 +164,57 @@ class Builder {
 
 		$db = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
-		//$words = array('artificio');
-
 		foreach ($words as $word) {
-			$definitions = $this->extractExamplesWord($word);
-			foreach ($definitions as $definition) {
-				echo $definition['definition'] . PHP_EOL;
-				$definitionDB = $this->parseDefinitionDB($definition, $word);
-				Functions::insertDB($db, 'definitions', $definitionDB);
+			$examples = $this->extractExamplesWord($word);
+			$count = count($examples);
+			foreach ($examples as $index => $example) {
+				echo $example . PHP_EOL;
+				$exampleDB = $this->parseExampleDB($example, $word, $index, $count);
+				Functions::insertDB($db, 'examples', $exampleDB);
 			}
 		}
 
+	}
+
+	public function extractExamplesWord($word) {
+
+		$examplesJsonBase = ROOT . "/htmls/glosbe/";
+		$examples = [];
+
+		$exampleJson = $examplesJsonBase . $word . '.json';
+		if (file_exists($exampleJson)) {
+
+			$json = file_get_contents($exampleJson);
+			$array = json_decode($json, true);
+
+			foreach ($array['examples'] as $example) {
+
+				$examples[] = $example['first'];
+			}
+		}
+
+		// Sort the examples by length
+		usort($examples, function($a, $b) {
+			return strlen($b) - strlen($a);
+		});
+
+		$examples = array_reverse($examples);
+
+		return $examples;
+
+	}
+
+	public function parseExampleDB($example, $word, $index, $count) {
+
+		$featured = ($index == floor($count/3));
+
+		$exampleDb['word'] = $word;
+		$exampleDb['example'] = $example;
+		$exampleDb['featured'] = $featured;
+		$exampleDb['created_at'] = date('Y-m-d H:i:s');
+		$exampleDb['updated_at'] = date('Y-m-d H:i:s');
+
+		return $exampleDb;
 	}
 
 	/** AUXILIAR **/

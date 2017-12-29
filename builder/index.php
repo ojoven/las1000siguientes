@@ -26,3 +26,4 @@ $builderModel = new Builder();
 //$builderModel->saveWordsToDatabase();
 //$builderModel->saveDefinitions();
 //$builderModel->saveExampleHTMLs();
+$builderModel->saveExamples();

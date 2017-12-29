@@ -17,4 +17,14 @@
             <?php } ?>
         </ul>
     </div>
+    <div class="examples">
+        <span class="example-header">Ejemplo:</span>
+        <ul>
+            <?php foreach($word['examples'] as $example) {
+            if ($example['featured']) { ?>
+            <li><span><?php echo $example['example']; ?></span></li>
+            <?php } ?>
+            <?php } ?>
+        </ul>
+    </div>
 </li>

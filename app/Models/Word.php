@@ -31,8 +31,11 @@ class Word extends Model {
 	public function completeWords($words) {
 
 		$definitionModel = new Definition();
+		$exampleModel = new Example();
+
 		foreach ($words as &$word) {
 			$word['definitions'] = $definitionModel->getDefinitionsWord($word);
+			$word['examples'] = $exampleModel->getExamplesWord($word);
 		}
 
 		return $words;
